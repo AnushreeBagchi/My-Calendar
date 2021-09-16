@@ -1,0 +1,13 @@
+.my-calendar{
+  display: flex;
+}
+
+.leftPanel {
+  position: relative;
+  width : 20%;
+}
+
+.rightPanel {
+  position: relative;
+  width : 90%;
+}
