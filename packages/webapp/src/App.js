@@ -1,14 +1,13 @@
-import './App.css'
-import LeftPanel from './components/LeftPanel/LeftPanel'
-import RightPanel from './components/RightPanel/RightPanel'
+import './App.css';
+import LeftPanel from './components/LeftPanel/LeftPanel';
+import CalendarGrid from './components/CalendarGrid/CalendarGrid';
 
 function App () {
   return (
     <div className='App'>
-      <p>My Calendar</p>
       <div className='my-calendar'>
         <LeftPanel />
-        <RightPanel />
+        <CalendarGrid />
       </div>
     </div>
   )

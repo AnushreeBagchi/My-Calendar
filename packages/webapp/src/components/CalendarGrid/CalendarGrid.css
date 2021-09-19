@@ -1,0 +1,49 @@
+.calendarGrid {
+  width: 70%;
+  position: relative;
+  margin: 20px;
+  right: 5px;
+}
+
+.grid {
+  display: flex;
+}
+
+.cells {
+  width: 150px;
+  height: 100px;
+  border: 1px solid #70757a;
+  border-bottom: none;
+  border-left: none;
+}
+
+.day {
+  width: 150px;
+  color :  #70757a;
+  /* border: 1px solid black; */
+  /* text-align: center; */
+}
+
+.timeCell {
+  width: 50px;
+  text-align: right;
+  padding-right: 10px;
+  margin-top: -10px;
+  color :  #70757a;
+  border-right: 1px solid #70757a;
+}
+
+.gridRow {
+  display: flex;
+}
+
+.rowBody{ 
+  overflow-y: scroll;
+  margin-top: 5%;
+  padding: 10px;
+}
+
+.rowHeader{
+  display: flex;
+  margin-left: 100px;
+}
