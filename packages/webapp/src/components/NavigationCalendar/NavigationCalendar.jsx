@@ -1,12 +1,15 @@
 import Calendar from 'react-calendar';
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { dateSelected } from '../../state/state';
 
 const NavigationCalendar = () =>  {
+  useEffect(()=> {
+    dispatch(dateSelected(new Date()));
+  });
+
   const dispatch = useDispatch();
   const onDateSelect = (selectedDate) => {
-    let date = `${selectedDate.getDate()}/${selectedDate.getMonth()+1}/${selectedDate.getFullYear()}` ;
     dispatch(dateSelected(selectedDate));
   }
   return (
