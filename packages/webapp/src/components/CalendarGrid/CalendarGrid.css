@@ -5,9 +5,6 @@
   right: 5px;
 }
 
-.grid {
-  display: flex;
-}
 
 .cells {
   width: 150px;
@@ -40,10 +37,13 @@
 .rowBody{ 
   overflow-y: scroll;
   margin-top: 5%;
-  padding: 10px;
 }
 
-.rowHeader{
+.rows{
   display: flex;
-  margin-left: 100px;
+}
+
+
+.columnHeader{
+  display: flex;
 }

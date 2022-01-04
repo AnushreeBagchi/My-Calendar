@@ -8,11 +8,10 @@ const CalendarGrid = () => {
   const selectedDay = useSelector((state) => state.state.selectedDay);
   const selectedDate = useSelector((state) => state.state.selectedDate);
 
-
   const getMonday = (date, day) => {
-      const currentDate = new Date(date);
-      const diff = currentDate.getDate() - day + (day === 0 ? -6 : 1);
-      return new Date(currentDate.setDate(diff));
+    const currentDate = new Date(date);
+    const diff = currentDate.getDate() - day + (day === 0 ? -6 : 1);
+    return new Date(currentDate.setDate(diff));
   };
 
   const getNextDate = (date) => {
@@ -21,39 +20,38 @@ const CalendarGrid = () => {
     return currentDate;
   };
 
-  
-
   const getSelectedWeek = () => {
     let currdate = getMonday(selectedDate, selectedDay);
     let selectedWeek = [currdate.getDate()];
     for (let i = 0; i < 7; i++) {
-        if (i > 0) {
-          currdate = getNextDate(currdate);
-          selectedWeek.push(currdate.getDate());
-        }
+      if (i > 0) {
+        currdate = getNextDate(currdate);
+        selectedWeek.push(currdate.getDate());
+      }
     }
     return selectedWeek;
-  }
+  };
+
+  const setMeeting = (row, date) => {
+    console.log("selected grid", row, date);
+  };
 
   return (
     <div className="calendarGrid">
-      <div className="rowHeader">
-        {weekDays.map((day, dayId) => (
+      <div className="columnHeader">
+        {weekDays.map((day) => (
           <div className="day">{day}</div>
         ))}
       </div>
-      <div className="rowHeader">
+      <div className="rows">
         {getSelectedWeek().map((date) => (
-          <div className="day">{date}</div>
-        ))}
-      </div>
-      <div className="rowBody">
-        {rows.map((row) => (
-          <div className="gridRow">
-            <div className="timeCell">{row}</div>
-            <div className="grid">
-              {weekDays.map((day) => (
-                <div className="cells"></div>
+          <div className="day">
+            {date}
+            <div className="rowBody">
+              {rows.map((row) => (
+                <div>
+                  <div onClick={() => setMeeting(row, date)}>{row}</div>
+                </div>
               ))}
             </div>
           </div>
