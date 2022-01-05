@@ -21,7 +21,6 @@
   display: flex;
 }
 
-
 .columnHeader{
   display: flex;
   color :  #70757a;
@@ -31,13 +30,12 @@
 .rowHeader{
   color :  #70757a;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .rowCells{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 50px;
-
+  height: 51px;
+  margin-right: 2px;
 }
