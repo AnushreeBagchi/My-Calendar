@@ -1,10 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./CalendarGrid.css";
+import { WEEKDAYS, TIME } from "../Constants";
 
 const CalendarGrid = () => {
-  const weekDays = useSelector((state) => state.state.weekDays);
-  const rows = useSelector((state) => state.state.time);
   const selectedDay = useSelector((state) => state.state.selectedDay);
   const selectedDate = useSelector((state) => state.state.selectedDate);
 
@@ -22,12 +21,13 @@ const CalendarGrid = () => {
 
   const getSelectedWeek = () => {
     let currdate = getMonday(selectedDate, selectedDay);
-    let selectedWeek = [currdate.getDate()];
+    let selectedWeek = [];
     for (let i = 0; i < 7; i++) {
-      if (i > 0) {
-        currdate = getNextDate(currdate);
-        selectedWeek.push(currdate.getDate());
-      }
+      selectedWeek.push({
+        date: currdate.getDate(),
+        day: WEEKDAYS[currdate.getDay()],
+      });
+      currdate = getNextDate(currdate);
     }
     return selectedWeek;
   };
@@ -38,24 +38,28 @@ const CalendarGrid = () => {
 
   return (
     <div className="calendarGrid">
-      <div className="columnHeader">
-        {weekDays.map((day) => (
-          <div className="day">{day}</div>
-        ))}
-      </div>
       <div className="rows">
-        {getSelectedWeek().map((date) => (
-          <div className="day">
-            {date}
-            <div className="rowBody">
-              {rows.map((row) => (
-                <div>
-                  <div onClick={() => setMeeting(row, date)}>{row}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="rowHeader">
+        {TIME.map((row) => (
+          <div className="rowCells">{row}</div>
         ))}
+        </div>
+        {selectedDate &&
+          getSelectedWeek().map((curr) => (
+            <div key={curr.date}>
+                <div className="columnHeader">{curr.day}</div>
+                <div className="columnHeader">{curr.date}</div>
+                <div className="body">
+                  {TIME.map((row) => (
+                    <div
+                      key={row}
+                      className="cells"
+                      onClick={() => setMeeting(row, curr.date)}
+                    ></div>
+                  ))}
+                </div>
+            </div>
+          ))}
       </div>
     </div>
   );
