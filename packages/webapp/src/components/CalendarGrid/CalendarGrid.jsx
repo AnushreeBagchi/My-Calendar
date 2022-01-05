@@ -40,24 +40,26 @@ const CalendarGrid = () => {
     <div className="calendarGrid">
       <div className="rows">
         <div className="rowHeader">
-        {TIME.map((row) => (
-          <div className="rowCells">{row}</div>
-        ))}
+          {TIME.map((row) => (
+            <div key={row} className="rowCells">
+              {row}
+            </div>
+          ))}
         </div>
         {selectedDate &&
           getSelectedWeek().map((curr) => (
             <div key={curr.date}>
-                <div className="columnHeader">{curr.day}</div>
-                <div className="columnHeader">{curr.date}</div>
-                <div className="body">
-                  {TIME.map((row) => (
-                    <div
-                      key={row}
-                      className="cells"
-                      onClick={() => setMeeting(row, curr.date)}
-                    ></div>
-                  ))}
-                </div>
+              <div className="columnHeader">{curr.day}</div>
+              <div className="columnHeader">{curr.date}</div>
+              <div className="body">
+                {TIME.map((row) => (
+                  <div
+                    key={row}
+                    className="cells"
+                    onClick={() => setMeeting(row, curr.date)}
+                  ></div>
+                ))}
+              </div>
             </div>
           ))}
       </div>
