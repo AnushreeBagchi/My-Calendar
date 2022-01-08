@@ -3,23 +3,20 @@
   position: relative;
   margin: 20px;
   right: 5px;
+  display: flex;
 }
 
 
 .cells {
   width: 100px;
   height: 50px;
-  border: 1px solid #70757a;
-  border-top: none;
+  border-radius: 0 !important;
 }
 
 .body{ 
   /* overflow-y: scroll; */
 }
 
-.rows{
-  display: flex;
-}
 
 .columnHeader{
   display: flex;
@@ -28,14 +25,17 @@
 }
 
 .rowHeader{
-  color :  #70757a;
-  justify-content: center;
-  margin-top: 25px;
+  width: auto;
 }
 
 .rowCells{
   display: flex;
   flex-direction: column;
-  height: 51px;
-  margin-right: 2px;
+  height: 50px;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.column{
+  padding: 0 !important;
 }

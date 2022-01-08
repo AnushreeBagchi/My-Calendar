@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "./CalendarGrid.css";
 import { WEEKDAYS, TIME } from "../Constants";
+import { Div, Grid, Item, Box } from "../../utils/utils";
 
 const CalendarGrid = () => {
   const selectedDay = useSelector((state) => state.state.selectedDay);
@@ -37,33 +38,31 @@ const CalendarGrid = () => {
   };
 
   return (
-    <div className="calendarGrid">
-      <div className="rows">
-        <div className="rowHeader">
-          {TIME.map((row) => (
-            <div key={row} className="rowCells">
-              {row}
-            </div>
-          ))}
-        </div>
-        {selectedDate &&
-          getSelectedWeek().map((curr) => (
-            <div key={curr.date}>
-              <div className="columnHeader">{curr.day}</div>
-              <div className="columnHeader">{curr.date}</div>
-              <div className="body">
-                {TIME.map((row) => (
-                  <div
-                    key={row}
-                    className="cells"
-                    onClick={() => setMeeting(row, curr.date)}
-                  ></div>
-                ))}
-              </div>
-            </div>
-          ))}
-      </div>
-    </div>
+    <Div className="calendarGrid">
+          <Grid item spacing={0} className="rowHeader">
+            <Item className="rowCells"></Item>
+            {TIME.map((row) => (
+              <Item className="rowCells">{row}</Item>
+            ))}
+          </Grid>
+
+      {selectedDate &&
+        getSelectedWeek().map((curr) => (
+          <Div className="column" key={curr.date}>
+            <Div className="columnHeader">{curr.day}</Div>
+            <Div className="columnHeader">{curr.date}</Div>
+            <Box sx={{ flexGrow: 1 }} className="Box">
+              <Grid container spacing={0} rowSpacing={0} columnSpacing={0}>
+                <Grid item xs={8} md={8} spacing={0}>
+                  {TIME.map((row) => (
+                    <Item className="cells"></Item>
+                  ))}
+                </Grid>
+              </Grid>
+            </Box>
+          </Div>
+        ))}
+    </Div>
   );
 };
 
