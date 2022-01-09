@@ -1,10 +1,15 @@
-import Calendar from "react-calendar";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { dateSelected } from "../../state/state";
 
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import CalendarPicker from "@mui/lab/CalendarPicker";
+
 const NavigationCalendar = () => {
   const defaultDate = new Date();
+  const [value, setValue] = React.useState(defaultDate);
+
   useEffect(() => {
     dispatch(
       dateSelected({
@@ -16,6 +21,7 @@ const NavigationCalendar = () => {
 
   const dispatch = useDispatch();
   const onDateSelect = (selectedDate) => {
+    setValue(selectedDate);
     dispatch(
       dateSelected({
         date: selectedDate.toDateString(),
@@ -25,7 +31,9 @@ const NavigationCalendar = () => {
   };
   return (
     <div>
-      <Calendar onChange={onDateSelect} />
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <CalendarPicker date={value} onChange={onDateSelect} />
+      </LocalizationProvider>
     </div>
   );
 };
