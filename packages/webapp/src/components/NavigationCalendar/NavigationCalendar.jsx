@@ -26,6 +26,7 @@ const NavigationCalendar = () => {
         <CalendarPicker
           date={selectedDate}
           onChange={(selectedDate) => setValue(selectedDate)}
+          minDate={defaultDate}
         />
       </LocalizationProvider>
     </div>
