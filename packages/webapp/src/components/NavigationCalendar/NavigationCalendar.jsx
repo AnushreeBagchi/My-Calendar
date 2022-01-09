@@ -7,32 +7,26 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import CalendarPicker from "@mui/lab/CalendarPicker";
 
 const NavigationCalendar = () => {
+  const dispatch = useDispatch();
   const defaultDate = new Date();
-  const [value, setValue] = React.useState(defaultDate);
+  const [selectedDate, setValue] = React.useState(defaultDate);
 
   useEffect(() => {
-    dispatch(
-      dateSelected({
-        date: defaultDate.toDateString(),
-        day: defaultDate.getDay(),
-      })
-    );
-  });
-
-  const dispatch = useDispatch();
-  const onDateSelect = (selectedDate) => {
-    setValue(selectedDate);
     dispatch(
       dateSelected({
         date: selectedDate.toDateString(),
         day: selectedDate.getDay(),
       })
     );
-  };
+  }, [dispatch, selectedDate]);
+
   return (
     <div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <CalendarPicker date={value} onChange={onDateSelect} />
+        <CalendarPicker
+          date={selectedDate}
+          onChange={(selectedDate) => setValue(selectedDate)}
+        />
       </LocalizationProvider>
     </div>
   );
