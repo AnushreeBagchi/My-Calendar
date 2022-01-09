@@ -5,6 +5,7 @@ import { dateSelected } from "../../state/state";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import CalendarPicker from "@mui/lab/CalendarPicker";
+import "./NavigationCalendar.css";
 
 const NavigationCalendar = () => {
   const dispatch = useDispatch();
@@ -21,15 +22,14 @@ const NavigationCalendar = () => {
   }, [dispatch, selectedDate]);
 
   return (
-    <div>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <CalendarPicker
-          date={selectedDate}
-          onChange={(selectedDate) => setValue(selectedDate)}
-          minDate={defaultDate}
-        />
-      </LocalizationProvider>
-    </div>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <CalendarPicker
+        date={selectedDate}
+        onChange={(selectedDate) => setValue(selectedDate)}
+        minDate={defaultDate}
+        className="calendarPicker"
+      />
+    </LocalizationProvider>
   );
 };
 

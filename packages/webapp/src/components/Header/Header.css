@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  color: #3c4043;
+}
+
+.menuDiv {
+  display: flex;
+  width: 20%;
+  margin-left: 1em;
+}
+
+.menu {
+}
+
+.logo {
+  margin-left: 1em;
+  font-size: x-large;
+  font-weight: 400;
+}
+
+.alignCenter {
+  display: flex !important;
+  justify-content: center !important;
+  height: 100% !important;
+  align-items: center;
+}
+
+.currentMonth {
+  margin-left: 2em;
+  font-size: x-large !important;
+  font-weight: 400 !important;
+}
+
+.headerTexts {
+  text-transform: none !important;
+  color: #3c4043 !important;
+}
