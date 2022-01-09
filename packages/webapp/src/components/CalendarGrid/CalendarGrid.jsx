@@ -5,6 +5,7 @@ import { WEEKDAYS, TIME } from "../Constants";
 import { Div, Grid, Item, Box } from "../../utils/utils";
 
 const CalendarGrid = () => {
+  const today = new Date();
   const selectedDay = useSelector((state) => state.state.selectedDay);
   const selectedDate = useSelector((state) => state.state.selectedDate);
 
@@ -25,7 +26,7 @@ const CalendarGrid = () => {
     let selectedWeek = [];
     for (let i = 0; i < 7; i++) {
       selectedWeek.push({
-        date: currdate.getDate(),
+        date: currdate,
         day: WEEKDAYS[currdate.getDay()],
       });
       currdate = getNextDate(currdate);
@@ -33,25 +34,35 @@ const CalendarGrid = () => {
     return selectedWeek;
   };
 
-  const setMeeting = (row, date) => {
-    console.log("selected grid", row, date);
-  };
+  // const setMeeting = (row, date) => {
+  //   console.log("selected grid", row, date);
+  // };
+  const isToday = (currentDate) =>
+    currentDate.toDateString() === today.toDateString();
 
   return (
-    <Div className="calendarGrid">
-          <Grid item spacing={0} className="rowHeader">
-            <Item className="rowCells"></Item>
-            {TIME.map((row) => (
-              <Item className="rowCells">{row}</Item>
-            ))}
-          </Grid>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid className="calendarGrid">
+        <Grid item spacing={0} className="rowHeader">
+          <Item className="rowCells"></Item>
+          {TIME.map((row) => (
+            <Item className="rowCells">{row}</Item>
+          ))}
+        </Grid>
 
-      {selectedDate &&
-        getSelectedWeek().map((curr) => (
-          <Div className="column" key={curr.date}>
-            <Div className="columnHeader">{curr.day}</Div>
-            <Div className="columnHeader">{curr.date}</Div>
-            <Box sx={{ flexGrow: 1 }} className="Box">
+        {selectedDate &&
+          getSelectedWeek().map((curr) => (
+            <Div className="column" key={curr.date}>
+              <Grid className="columnHeader">
+                <Div className={isToday(curr.date) ? "colorBlue" : ""}>
+                  {curr.day}
+                </Div>
+              </Grid>
+              <Grid className="columnHeader">
+                <Div className={isToday(curr.date) ? "today" : "notToday"}>
+                  {curr.date.getDate()}
+                </Div>
+              </Grid>
               <Grid container spacing={0} rowSpacing={0} columnSpacing={0}>
                 <Grid item xs={8} md={8} spacing={0}>
                   {TIME.map((row) => (
@@ -59,10 +70,10 @@ const CalendarGrid = () => {
                   ))}
                 </Grid>
               </Grid>
-            </Box>
-          </Div>
-        ))}
-    </Div>
+            </Div>
+          ))}
+      </Grid>
+    </Box>
   );
 };
 
