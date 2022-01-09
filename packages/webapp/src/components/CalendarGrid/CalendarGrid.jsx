@@ -34,19 +34,22 @@ const CalendarGrid = () => {
     return selectedWeek;
   };
 
-  // const setMeeting = (row, date) => {
-  //   console.log("selected grid", row, date);
-  // };
+  const setMeeting = (row, date) => {
+    console.log("selected grid", row, date);
+  };
+
   const isToday = (currentDate) =>
     currentDate.toDateString() === today.toDateString();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid className="calendarGrid">
-        <Grid item spacing={0} className="rowHeader">
+        <Grid item className="rowHeader">
           <Item className="rowCells"></Item>
           {TIME.map((row) => (
-            <Item className="rowCells">{row}</Item>
+            <Item className="rowCells" key={row}>
+              {row}
+            </Item>
           ))}
         </Grid>
 
@@ -64,9 +67,13 @@ const CalendarGrid = () => {
                 </Div>
               </Grid>
               <Grid container spacing={0} rowSpacing={0} columnSpacing={0}>
-                <Grid item xs={8} md={8} spacing={0}>
+                <Grid item xs={8} md={8}>
                   {TIME.map((row) => (
-                    <Item className="cells"></Item>
+                    <Item
+                      key={row}
+                      className="cells"
+                      onClick={() => setMeeting()}
+                    ></Item>
                   ))}
                 </Grid>
               </Grid>

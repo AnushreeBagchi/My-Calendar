@@ -1,20 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 export const calendarSlice = createSlice({
-  name: 'counter',
+  name: "counter",
   initialState: {
-    selectedDate: '',
-    selectedDay: '',
+    selectedDate: "",
+    selectedDay: "",
   },
   reducers: {
-    dateSelected: (state, inputDate) => {
-      const selectedDate = inputDate.payload;
-      let selectedDay = selectedDate.getDay();
-      state.selectedDate = selectedDate;
-      state.selectedDay = selectedDay;
-    }
-  }
-})
+    dateSelected: (state, input) => {
+      const { date, day } = input.payload;
+      state.selectedDate = date;
+      state.selectedDay = day;
+    },
+  },
+});
 
 export const { dateSelected } = calendarSlice.actions;
 
