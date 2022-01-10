@@ -8,7 +8,9 @@ import {
   MenuIcon,
   Typography,
 } from "../../utils/utils";
+import { dateSelected } from "../../state/state";
 import "./Header.css";
+
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,16 @@ const Header = () => {
 
   //   const [selectedMonthAndYear, setValue] = React.useState(getMonthAndYear(currentDate));
 
+  const navigationButtonClicked = (date) => {
+    dispatch(
+      dateSelected({
+        date: date.toDateString(),
+        day: date.getDay(),
+      })
+    );
+  };
+
+
   return (
     <Div className="header">
       <Div className="menuDiv">
@@ -31,7 +43,11 @@ const Header = () => {
 
       <Div className="navigationIcons header">
         <ArrowBackIosIcon className="alignCenter" />
-        <Button className="alignCenter  " variant="text">
+        <Button
+          className="alignCenter  "
+          variant="text"
+          onClick={() => navigationButtonClicked(new Date())}
+        >
           Today
         </Button>
         <ArrowForwardIosIcon className="alignCenter" />
