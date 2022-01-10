@@ -16,13 +16,13 @@ const Header = () => {
   const currentDate = new Date();
   const gridDateString = useSelector((state) => state.state.selectedDate);
   const selectedGridDate = gridDateString ? parse(gridDateString, 'dd-MM-yyyy', new Date()) : currentDate;
-  const getMonthAndYear = (date) => {
-    const month = date.toLocaleString("default", { month: "long" });
-    const year = date.getFullYear();
+  
+  const getMonthAndYear = () => {
+    const month = selectedGridDate.toLocaleString("default", { month: "long" });
+    const year = selectedGridDate.getFullYear();
     return month + " " + year;
   };
 
-  //   const [selectedMonthAndYear, setValue] = React.useState(getMonthAndYear(currentDate));
 
   const navigationButtonClicked = (date) => {
     dispatch(
@@ -57,7 +57,7 @@ const Header = () => {
           onClick={() => navigationButtonClicked(addDays(selectedGridDate, 7))}
         />
         <Div className="currentMonth headerTexts">
-          {getMonthAndYear(currentDate)}
+          {getMonthAndYear()}
         </Div>
       </Div>
     </Div>
