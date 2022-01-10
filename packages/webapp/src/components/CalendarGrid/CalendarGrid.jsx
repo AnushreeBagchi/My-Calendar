@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import "./CalendarGrid.css";
 import { WEEKDAYS, TIME } from "../Constants";
 import { Div, Grid, Item, Box } from "../../utils/utils";
+import { parse } from 'date-fns';
 
 const CalendarGrid = () => {
   const today = new Date();
@@ -10,7 +11,7 @@ const CalendarGrid = () => {
   const selectedDate = useSelector((state) => state.state.selectedDate);
 
   const getMonday = (date, day) => {
-    const currentDate = new Date(date);
+    const currentDate = parse(date, 'dd-MM-yyyy', new Date());
     const diff = currentDate.getDate() - day + (day === 0 ? -6 : 1);
     return new Date(currentDate.setDate(diff));
   };

@@ -10,6 +10,7 @@ import {
 } from "../../utils/utils";
 import { dateSelected } from "../../state/state";
 import "./Header.css";
+import { format } from 'date-fns';
 
 
 const Header = () => {
@@ -27,7 +28,8 @@ const Header = () => {
   const navigationButtonClicked = (date) => {
     dispatch(
       dateSelected({
-        date: date.toDateString(),
+        // date: date.toDateString(),
+        date: format(date, 'dd-MM-yyyy'),
         day: date.getDay(),
       })
     );
