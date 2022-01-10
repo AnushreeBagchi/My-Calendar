@@ -5,6 +5,7 @@ export const calendarSlice = createSlice({
   initialState: {
     selectedDate: "",
     selectedDay: "",
+    hideNavigationCalendar: false,
   },
   reducers: {
     dateSelected: (state, input) => {

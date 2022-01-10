@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationCalendar from '../NavigationCalendar/NavigationCalendar'
+import NavigationCalendar from '../NavigationCalendar/NavigationCalendar';
 
 
 const LeftPanel = () =>  {
