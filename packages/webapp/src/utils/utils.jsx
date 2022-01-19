@@ -7,6 +7,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
 
 export const Div = styled("div")(({ theme }) => ({
   ...theme.typography.button,
@@ -29,4 +30,5 @@ export {
   ArrowForwardIosIcon,
   MenuIcon,
   Typography,
+  Modal,
 };
