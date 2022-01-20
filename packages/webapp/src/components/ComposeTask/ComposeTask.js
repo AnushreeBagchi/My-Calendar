@@ -6,6 +6,8 @@ import {
   DialogTitle,
   Button,
   NativeSelect,
+  TextField,
+  AccessAlarmIcon,
 } from "../../utils/utils.jsx";
 import { format } from "date-fns";
 import { TIMESTAMP } from "../Constants";
@@ -26,32 +28,34 @@ const ComposeTask = ({
   return (
     <Dialog open={open}>
       <DialogTitle>Compose Event</DialogTitle>
-      <DialogContent>
-          {format(composeTaskDate, "EEEE, MMMM dd ")}
-          <NativeSelect
-            value={composeTaskTime}
-            className="startTimeDropdown"
-          >
-            {TIMESTAMP.map((time) => (
-              <option key={time} value={time}>
-                {time}
-              </option>
-            ))}
-          </NativeSelect>
-          -
-          <NativeSelect
-            value={composeTaskTime}
-            className="endTimeDropdown"
-          >
-            {TIMESTAMP.map((time) => (
-              <option key={time}value={time}>{time}</option>
-            ))}
-          </NativeSelect>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Create</Button>
-        </DialogActions>
+      <TextField
+        variant="standard"
+        placeholder="Add title"
+        className="title"
+      ></TextField>
+      <DialogContent className="dialogContent">
+        <AccessAlarmIcon className="clockIcon"></AccessAlarmIcon>
+        {format(composeTaskDate, "EEEE, MMMM dd ")}
+        <NativeSelect value={composeTaskTime} className="startTimeDropdown">
+          {TIMESTAMP.map((time) => (
+            <option key={time} value={time}>
+              {time}
+            </option>
+          ))}
+        </NativeSelect>
+        -
+        <NativeSelect value={composeTaskTime} className="endTimeDropdown">
+          {TIMESTAMP.map((time) => (
+            <option key={time} value={time}>
+              {time}
+            </option>
+          ))}
+        </NativeSelect>
       </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleClose}>Create</Button>
+      </DialogActions>
     </Dialog>
   );
 };

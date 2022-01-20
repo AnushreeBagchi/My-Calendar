@@ -12,3 +12,31 @@
 .endTimeDropdown svg {
   display: none;
 }
+
+.startTimeDropdown select {
+    padding-right: 0 !important;
+    margin-left: 1em;
+  }
+
+  .endTimeDropdown select {
+    padding-right: 0 !important;
+    margin-left: 0.5em;
+  }
+
+  .title{
+    padding: 1.5em !important;
+}
+
+.title div{
+    font-size: x-large;
+}
+
+.clockIcon{
+    padding-right: 0.5em;
+}
+
+.dialogContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
