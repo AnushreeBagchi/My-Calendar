@@ -8,6 +8,11 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import NativeSelect from "@mui/material/NativeSelect";
 
 export const Div = styled("div")(({ theme }) => ({
   ...theme.typography.button,
@@ -31,4 +36,9 @@ export {
   MenuIcon,
   Typography,
   Modal,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  NativeSelect,
 };

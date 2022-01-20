@@ -41,7 +41,7 @@ const CalendarGrid = () => {
   };
 
   const onModalOpen = (time, date) => {
-    setTaskDate(format(date, "dd-MM-yyyy"));
+    setTaskDate(date);
     setTaskTime(time);
     setModal(true);
   };
@@ -94,8 +94,8 @@ const CalendarGrid = () => {
       <ComposeTask
         open={isModalOpen}
         handleClose={onModalClose}
-        composeTaskDate={composeTaskDate}
-        composeTaskTime={composeTaskTime}
+        composeTaskDate={composeTaskDate || new Date()}
+        composeTaskTime={composeTaskTime||'12AM'}
       />
     </>
   );

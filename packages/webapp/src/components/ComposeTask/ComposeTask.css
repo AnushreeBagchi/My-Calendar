@@ -1,0 +1,14 @@
+.startTimeDropdown:before {
+  border-bottom: none !important;
+}
+
+.endTimeDropdown:before {
+  border-bottom: none !important;
+}
+.startTimeDropdown svg {
+  display: none;
+}
+
+.endTimeDropdown svg {
+  display: none;
+}
