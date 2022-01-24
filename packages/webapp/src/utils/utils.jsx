@@ -13,8 +13,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import NativeSelect from "@mui/material/NativeSelect";
-import TextField from '@mui/material/TextField';
-import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import TextField from "@mui/material/TextField";
+import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 
 export const Div = styled("div")(({ theme }) => ({
   ...theme.typography.button,
@@ -44,5 +46,7 @@ export {
   DialogTitle,
   NativeSelect,
   TextField,
-  AccessAlarmIcon
+  AccessAlarmIcon,
+  LocationOnIcon,
+  PeopleAltIcon,
 };

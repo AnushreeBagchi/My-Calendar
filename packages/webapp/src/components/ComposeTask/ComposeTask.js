@@ -8,6 +8,9 @@ import {
   NativeSelect,
   TextField,
   AccessAlarmIcon,
+  Div,
+  LocationOnIcon,
+  PeopleAltIcon,
 } from "../../utils/utils.jsx";
 import { format } from "date-fns";
 import { TIMESTAMP } from "../Constants";
@@ -33,24 +36,42 @@ const ComposeTask = ({
         placeholder="Add title"
         className="title"
       ></TextField>
-      <DialogContent className="dialogContent">
-        <AccessAlarmIcon className="clockIcon"></AccessAlarmIcon>
-        {format(composeTaskDate, "EEEE, MMMM dd ")}
-        <NativeSelect value={composeTaskTime} className="startTimeDropdown">
-          {TIMESTAMP.map((time) => (
-            <option key={time} value={time}>
-              {time}
-            </option>
-          ))}
-        </NativeSelect>
-        -
-        <NativeSelect value={composeTaskTime} className="endTimeDropdown">
-          {TIMESTAMP.map((time) => (
-            <option key={time} value={time}>
-              {time}
-            </option>
-          ))}
-        </NativeSelect>
+      <DialogContent>
+        <Div className="dateTimeDiv">
+          <AccessAlarmIcon className="clockIcon" color="primary" />
+          {format(composeTaskDate, "EEEE, MMMM dd ")}
+          <NativeSelect value={composeTaskTime} className="startTimeDropdown">
+            {TIMESTAMP.map((time) => (
+              <option key={time} value={time}>
+                {time}
+              </option>
+            ))}
+          </NativeSelect>
+          -
+          <NativeSelect value={composeTaskTime} className="endTimeDropdown">
+            {TIMESTAMP.map((time) => (
+              <option key={time} value={time}>
+                {time}
+              </option>
+            ))}
+          </NativeSelect>
+        </Div>
+        <Div className="locationDiv">
+          <LocationOnIcon color="primary" className="locationIcon" />
+          <TextField
+            variant="standard"
+            placeholder="Add location"
+            className="location"
+          ></TextField>
+        </Div>
+        <Div className="guestDiv">
+          <PeopleAltIcon color="primary" className="locationIcon" />
+          <TextField
+            variant="standard"
+            placeholder="Add guests"
+            className="guests"
+          ></TextField>
+        </Div>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>

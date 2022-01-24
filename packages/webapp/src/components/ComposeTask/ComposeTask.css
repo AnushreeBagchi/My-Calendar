@@ -14,29 +14,35 @@
 }
 
 .startTimeDropdown select {
-    padding-right: 0 !important;
-    margin-left: 1em;
-  }
-
-  .endTimeDropdown select {
-    padding-right: 0 !important;
-    margin-left: 0.5em;
-  }
-
-  .title{
-    padding: 1.5em !important;
+  padding-right: 0 !important;
+  margin-left: 1em;
 }
 
-.title div{
-    font-size: x-large;
+.endTimeDropdown select {
+  padding-right: 0 !important;
+  margin-left: 0.5em;
 }
 
-.clockIcon{
-    padding-right: 0.5em;
+.title {
+  padding: 1.5em !important;
 }
 
-.dialogContent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.title div {
+  font-size: x-large;
+}
+
+.clockIcon,
+.locationIcon {
+  padding-right: 0.5em;
+}
+
+.dateTimeDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.location,
+.guests {
+  width: 89%;
 }
