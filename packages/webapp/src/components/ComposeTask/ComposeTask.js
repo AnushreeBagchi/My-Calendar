@@ -51,7 +51,7 @@ const ComposeTask = ({
 
   const onCreateClick = () => {
     dispatch(eventCreated({
-      eventTitle,startTime, endTime, eventLocation, eventGuests
+      eventTitle,startTime, composeTaskDate, endTime, eventLocation, eventGuests
     }));
     handleClose();
   }
