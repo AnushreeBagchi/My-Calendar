@@ -6,6 +6,7 @@ export const calendarSlice = createSlice({
     selectedDate: "",
     selectedDay: "",
     hideNavigationCalendar: false,
+    events: [],
   },
   reducers: {
     dateSelected: (state, input) => {
@@ -13,9 +14,12 @@ export const calendarSlice = createSlice({
       state.selectedDate = date;
       state.selectedDay = day;
     },
+    eventCreated: (state, eventDetails) => {
+      state.events.push(eventDetails.payload);
+    }
   },
 });
 
-export const { dateSelected } = calendarSlice.actions;
+export const { dateSelected, eventCreated } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

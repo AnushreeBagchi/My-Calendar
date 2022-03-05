@@ -15,6 +15,8 @@ import {
 import { format } from "date-fns";
 import { TIMESTAMP } from "../Constants";
 import "./ComposeTask.css";
+import { useDispatch } from "react-redux";
+import { eventCreated } from "../../state/state.js";
 
 const ComposeTask = ({
   open,
@@ -23,12 +25,17 @@ const ComposeTask = ({
   composeTaskDate,
 }) => {
 
+  const [startTime, setStartTime] = React.useState();
+  const [endTime, setEndTime] = React.useState();
+  const [eventTitle, setEventTitle] = React.useState();
+  const [eventLocation, setEventLocation] = React.useState();
+  const [eventGuests, setEventGuests] = React.useState();
+  const dispatch = useDispatch();
+
   React.useEffect(() => {
     getdropDownTime(composeTaskTime);
   }, [composeTaskTime]);
 
-  const [startTime, setStartTime] = React.useState();
-  const [endTime, setEndTime] = React.useState();
   const getdropDownTime = (composeTaskTime) => {
     let dropDownTime;
     if (composeTaskTime) {
@@ -42,6 +49,13 @@ const ComposeTask = ({
     dropdown === 'startTimeChange' ? setStartTime(time) : setEndTime(time);
   }
 
+  const onCreateClick = () => {
+    dispatch(eventCreated({
+      eventTitle,startTime, endTime, eventLocation, eventGuests
+    }));
+    handleClose();
+  }
+
   return (
     <Dialog open={open}>
       <DialogTitle>Compose Event</DialogTitle>
@@ -49,6 +63,7 @@ const ComposeTask = ({
         variant="standard"
         placeholder="Add title"
         className="title"
+        onChange={(e)=> setEventTitle(e.target.value)}
       ></TextField>
       <DialogContent>
         <Div className="dateTimeDiv">
@@ -76,6 +91,7 @@ const ComposeTask = ({
             variant="standard"
             placeholder="Add location"
             className="location"
+            onChange={(e)=> setEventLocation(e.target.value)}
           ></TextField>
         </Div>
         <Div className="guestDiv">
@@ -84,12 +100,13 @@ const ComposeTask = ({
             variant="standard"
             placeholder="Add guests"
             className="guests"
+            onChange={(e)=> setEventGuests(e.target.value)}
           ></TextField>
         </Div>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose}>Create</Button>
+        <Button onClick={onCreateClick}>Create</Button>
       </DialogActions>
     </Dialog>
   );
