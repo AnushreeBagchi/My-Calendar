@@ -22,11 +22,25 @@ const ComposeTask = ({
   composeTaskTime,
   composeTaskDate,
 }) => {
-  const startTime = React.useState();
-  const endTime = React.useState();
 
-  console.log(composeTaskTime.toLowerCase());
-  composeTaskTime = "1:00am";
+  React.useEffect(() => {
+    getdropDownTime(composeTaskTime);
+  }, [composeTaskTime]);
+
+  const [startTime, setStartTime] = React.useState();
+  const [endTime, setEndTime] = React.useState();
+  const getdropDownTime = (composeTaskTime) => {
+    let dropDownTime;
+    if (composeTaskTime) {
+      dropDownTime = composeTaskTime.includes('AM') ? composeTaskTime.replace('AM', '').concat(':00').concat('am') : composeTaskTime.replace('PM', '').concat(':00').concat('pm');
+    }
+    setStartTime(dropDownTime);
+    setEndTime(dropDownTime);
+  }
+
+  const onTimeChange = (dropdown, time) => {
+    dropdown === 'startTimeChange' ? setStartTime(time) : setEndTime(time);
+  }
 
   return (
     <Dialog open={open}>
@@ -40,15 +54,15 @@ const ComposeTask = ({
         <Div className="dateTimeDiv">
           <AccessAlarmIcon className="clockIcon" color="primary" />
           {format(composeTaskDate, "EEEE, MMMM dd ")}
-          <NativeSelect value={composeTaskTime} className="startTimeDropdown">
+          <NativeSelect value={startTime} className="startTimeDropdown" onChange={(e) => onTimeChange('startTimeChange', e.target.value)}>
             {TIMESTAMP.map((time) => (
-              <option key={time} value={time}>
+              <option key={time} value={time} >
                 {time}
               </option>
             ))}
           </NativeSelect>
           -
-          <NativeSelect value={composeTaskTime} className="endTimeDropdown">
+          <NativeSelect value={endTime} className="endTimeDropdown" onChange={(e) => onTimeChange('endTimeChange', e.target.value)}>
             {TIMESTAMP.map((time) => (
               <option key={time} value={time}>
                 {time}

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import "./CalendarGrid.css";
 import { WEEKDAYS, TIME } from "../Constants";
 import { Div, Grid, Item, Box } from "../../utils/utils";
-import { parse, format } from "date-fns";
+import { parse } from "date-fns";
 import ComposeTask from "../ComposeTask/ComposeTask";
 
 const CalendarGrid = () => {
@@ -95,7 +95,7 @@ const CalendarGrid = () => {
         open={isModalOpen}
         handleClose={onModalClose}
         composeTaskDate={composeTaskDate || new Date()}
-        composeTaskTime={composeTaskTime||'12AM'}
+        composeTaskTime={composeTaskTime}
       />
     </>
   );
