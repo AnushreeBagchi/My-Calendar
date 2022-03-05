@@ -10,6 +10,8 @@ const CalendarGrid = () => {
   const today = new Date();
   const selectedDay = useSelector((state) => state.state.selectedDay);
   const selectedDate = useSelector((state) => state.state.selectedDate);
+  const events = useSelector((state) => state.state.events);
+  console.log(events);
 
   const [isModalOpen, setModal] = useState(false);
   const [composeTaskDate, setTaskDate] = useState();
